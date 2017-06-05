@@ -11,6 +11,12 @@ public class TestSuite {
     private String name;
     private String host;
 
+    private List<TestCase> testCaseList;
+
+    public TestSuite() {
+        testCaseList = new ArrayList<TestCase>();
+    }
+
     public String getName() {
         return name;
     }
@@ -25,5 +31,15 @@ public class TestSuite {
 
     public void setHost(String host) {
         this.host = host;
+    }
+
+    public List<TestCase> getTestCaseList
+
+    {
+        return testCaseList;
+    }
+
+    public void addTestCase(TestCase testCase) {
+        this.testCaseList.add(testCase);
     }
 }
