@@ -33,9 +33,7 @@ public class TestSuite {
         this.host = host;
     }
 
-    public List<TestCase> getTestCaseList
-
-    {
+    public List<TestCase> getTestCaseList() {
         return testCaseList;
     }
 
