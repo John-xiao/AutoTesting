@@ -15,7 +15,7 @@
         </input>
         <expectresult>
             <result name="ret_code">200</result>
-            <result name="ret_msg">secuess</result>
+            <result name="ret_msg">success</result>
             <result name="result"  check="false">
                 {"preparation":60,
                 "decision_response":60,
