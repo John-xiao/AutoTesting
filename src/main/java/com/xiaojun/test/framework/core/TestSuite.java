@@ -40,4 +40,17 @@ public class TestSuite {
     public void addTestCase(TestCase testCase) {
         this.testCaseList.add(testCase);
     }
+
+    public TestCase getTestCaseByName(String caseName) {
+        TestCase returnCase = null;
+
+        for (TestCase tempCase : testCaseList) {
+            if (tempCase.getName().equals(caseName)) {
+                returnCase = tempCase;
+                break;
+            }
+        }
+
+        return returnCase;
+    }
 }
