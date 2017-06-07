@@ -6,6 +6,7 @@ package com.xiaojun.test.testcase;
 
 import com.xiaojun.test.framework.core.*;
 import com.xiaojun.test.framework.*;
+import com.xiaojun.test.framework.util.configuration.*;
 import org.slf4j.LoggerFactory;
 import org.slf4j.Logger;
 import org.testng.annotations.*;
@@ -19,8 +20,10 @@ public class TestCaseDemo {
 
     @Test
     public void load_data_sample() {
-        Map<String, TestParameter> inputParam = RequestDataFactory.getInputParameterFromXML("request_data_sample.xml", "test_case_sample");
+//        Map<String, TestParameter> inputParam = RequestDataFactory.getInputParameterFromXML("request_data_sample.xml", "test_case_sample");
+//        Assert.assertEquals(inputParam.get("user_id").getValue(), "26016450");
 
-        Assert.assertEquals(inputParam.get("user_id").getValue(), "26016450");
+        String host = ConfigurationUtil.getValue("HOST", "CHARGE");
+        Assert.assertEquals(host, "charge.stage.yongche.org");
     }
 }

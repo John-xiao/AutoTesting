@@ -18,10 +18,10 @@ public class ActiveConfiguration {
     private String name;
     private boolean active;
 
-    private ActiveConfiguration() {
+    public ActiveConfiguration() {
     }
 
-    private ActiveConfiguration(String rootDir, String name, boolean active) {
+    public ActiveConfiguration(String rootDir, String name, boolean active) {
         this.rootDir = rootDir;
         this.name = name;
         this.active = active;
@@ -84,8 +84,7 @@ public class ActiveConfiguration {
                 s_activeConfiguration = new ActiveConfiguration(DEFAULT_ROOT_DIR, activeConfigIniName, true);
             } else {
                 // env variable is not available, retrieve active config ini file name from config.xml
-                ConfigurationFileList configList = new ConfigurationFileList();
-                configList.LoadFile();
+                ConfigurationFileList configList = ConfigurationFileList.getConfigurationList();
                 for (ActiveConfiguration config : configList) {
                     // for multiple items, the first one which active is true will be chosen, others will be ignored.
                     if (config.active == true) {
