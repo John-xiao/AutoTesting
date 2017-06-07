@@ -9,8 +9,8 @@
         1) set the expected one's active = true and set others = false
         2) move the expected one to the top 1 item
     -->
-    <configuration rootDir="config" name="config_testing.ini" active="true"/>
-    <configuration rootDir="config" name="config_product_mirror.ini" active="true"/>
+    <configuration rootDir="data/configuration/" name="config_testing.ini" active="true"/>
+    <configuration rootDir="data/configuration/" name="config_product_mirror.ini" active="true"/>
 </configurations>
 
 
