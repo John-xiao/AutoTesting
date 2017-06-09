@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <testsuite name="test_suite_sample" host="127.0.0.1">
-    <testcase name="test_case_sample"  service_type="order" service_uri="state/createorder"  method="post">
+    <testcase name="base"  service_type="order" service_uri="state/createorder"  method="post">
         <input>
             <parameter name="user_id">26016450</parameter>
             <parameter name="corporate_id">0</parameter>
@@ -26,5 +26,10 @@
         <output>
             <parameter alias="order_id">service_order_id</parameter>
         </output>
+    </testcase>
+    <testcase name="test_case_sample"  service_type="order" service_uri="state/createorder"  method="post">
+        <input>
+            <parameter name="user_id">26016450_0</parameter>
+        </input>
     </testcase>
 </testsuite>

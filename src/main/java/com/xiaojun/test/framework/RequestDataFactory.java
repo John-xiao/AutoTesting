@@ -54,7 +54,19 @@ public class RequestDataFactory {
     public static Map<String, TestParameter> getInputParameterFromXML(String fileName, String caseName) {
         String xmlFilePath = XML_FILE_DIR + fileName.trim();
         TestSuite suite = loadTestSuiteFromXML(xmlFilePath);
+        TestCase baseCase = suite.getTestCaseByName("base");
         TestCase testCase = suite.getTestCaseByName(caseName);
-        return testCase.getInputParameterMap();
+        if (null != testCase) {
+            Map<String, TestParameter> baseInputParameterMap = baseCase.getInputParameterMap();
+            Map<String, TestParameter> testInputParameterMap = testCase.getInputParameterMap();
+
+            if (testInputParameterMap.size() > 0) {
+                for (Map.Entry<String, TestParameter> entry : testInputParameterMap.entrySet()) {
+                    baseInputParameterMap.put(entry.getKey(), entry.getValue());
+                }
+            }
+        }
+
+        return baseCase.getInputParameterMap();
     }
 }
