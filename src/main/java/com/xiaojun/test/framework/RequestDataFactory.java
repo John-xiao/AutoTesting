@@ -6,11 +6,15 @@ import org.apache.commons.digester3.*;
 import java.io.File;
 import java.util.*;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 /**
  * Created by yongche on 17/6/2.
  */
 public class RequestDataFactory {
     private static String XML_FILE_DIR = "data/request_data/";
+    public static Logger log = LoggerFactory.getLogger(RequestDataFactory.class);
 
     public static TestSuite loadTestSuiteFromXML(String filePath) {
         Digester digester = new Digester();
@@ -51,7 +55,7 @@ public class RequestDataFactory {
         return ts;
     }
 
-    public static Map<String, TestParameter> getInputParameterFromXML(String fileName, String caseName) {
+    public static TestCase getTestCaseFromXML(String fileName, String caseName) {
         String xmlFilePath = XML_FILE_DIR + fileName.trim();
         TestSuite suite = loadTestSuiteFromXML(xmlFilePath);
         TestCase baseCase = suite.getTestCaseByName("base");
@@ -65,8 +69,15 @@ public class RequestDataFactory {
                     baseInputParameterMap.put(entry.getKey(), entry.getValue());
                 }
             }
+        } else {
+            log.error("Test case not found!");
+            baseCase = null;
         }
 
-        return baseCase.getInputParameterMap();
+        return baseCase;
+    }
+
+    public static Map<String, TestParameter> getInputParameterFromXML(String fileName, String caseName) {
+        return getTestCaseFromXML(fileName, caseName).getInputParameterMap();
     }
 }
