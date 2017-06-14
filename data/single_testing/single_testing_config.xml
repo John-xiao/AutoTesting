@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataprovider>
+    <!-- name: tests category name-->
+    <!-- value: xml files directory or single xml file path-->
+    <!-- enable: run the tests or not-->
+    <!--recursive: get all xml files under the directory and its sub directories or not-->
+    <location  name="Pilot" value="data/request_data" enable="true" recursive="true"/>
+</dataprovider>
