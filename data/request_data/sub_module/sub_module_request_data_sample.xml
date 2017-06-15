@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="test_suite_sample" host="127.0.0.1">
+    <testcase name="base"  service_type="order" service_uri="state/createorder"  method="post">
+        <input>
+            <parameter name="user_id">26016450</parameter>
+            <parameter name="corporate_id">0</parameter>
+            <parameter name="corporate_dept_id">0</parameter>
+            <parameter name="product_type_id">7</parameter>
+            <parameter name="city">bj</parameter>
+            <parameter name="is_asap">0</parameter>
+            <parameter name="expect_start_time">1513782035</parameter>
+            <parameter name="expect_start_longitude">121.332608</parameter>
+            <parameter name="expect_start_latitude">31.201047</parameter>
+            <parameter name="device_id">24805256802600121</parameter>
+        </input>
+        <expectresult>
+            <result name="ret_code">200</result>
+            <result name="ret_msg">success</result>
+            <result name="result"  check="false">
+                {"preparation":60,
+                "decision_response":60,
+                "is_face_pay":1,
+                "service_order_id":"6356096699146993750"}
+            </result>
+        </expectresult>
+        <output>
+            <parameter alias="order_id">service_order_id</parameter>
+        </output>
+    </testcase>
+    <testcase name="test_case_sample"  service_type="order" service_uri="state/createorder"  method="post">
+        <input>
+            <parameter name="user_id">26016450_0</parameter>
+        </input>
+    </testcase>
+</testsuite>

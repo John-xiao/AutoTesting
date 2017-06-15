@@ -1,6 +1,7 @@
 package com.xiaojun.test.framework;
 
 import com.xiaojun.test.framework.core.*;
+import com.xiaojun.test.framework.util.*;
 import org.apache.commons.digester3.*;
 
 import java.io.File;
@@ -13,7 +14,6 @@ import org.slf4j.LoggerFactory;
  * Created by yongche on 17/6/2.
  */
 public class RequestDataFactory {
-    private static String XML_FILE_DIR = "data/request_data/";
     public static Logger log = LoggerFactory.getLogger(RequestDataFactory.class);
 
     public static TestSuite loadTestSuiteFromXML(String filePath) {
@@ -55,9 +55,8 @@ public class RequestDataFactory {
         return ts;
     }
 
-    public static TestCase getTestCaseFromXML(String fileName, String caseName) {
-        String xmlFilePath = XML_FILE_DIR + fileName.trim();
-        TestSuite suite = loadTestSuiteFromXML(xmlFilePath);
+    public static TestCase getTestCaseFromXML(String filePath, String caseName) {
+        TestSuite suite = loadTestSuiteFromXML(filePath);
         TestCase baseCase = suite.getTestCaseByName("base");
         TestCase testCase = suite.getTestCaseByName(caseName);
         if (null != testCase) {
@@ -77,7 +76,22 @@ public class RequestDataFactory {
         return baseCase;
     }
 
-    public static Map<String, TestParameter> getInputParameterFromXML(String fileName, String caseName) {
-        return getTestCaseFromXML(fileName, caseName).getInputParameterMap();
+    /**
+     * @param relativeNamePath relative path against XML_FILE_DIR
+     */
+    public static TestCase getTestCaseFromXMLByRelativePath(String relativeNamePath, String caseName) {
+        String xmlFilePath = CommonConst.XML_FILE_DIR + relativeNamePath.trim();
+        return getTestCaseFromXML(xmlFilePath, caseName);
+    }
+
+    public static Map<String, TestParameter> getInputParameterFromXML(String fileNamePath, String caseName) {
+        return getTestCaseFromXML(fileNamePath, caseName).getInputParameterMap();
+    }
+
+    /**
+     * @param relativeNamePath relative path against XML_FILE_DIR
+     */
+    public static Map<String, TestParameter> getInputParameterFromXMLByRelativePath(String relativeNamePath, String caseName) {
+        return getTestCaseFromXMLByRelativePath(relativeNamePath, caseName).getInputParameterMap();
     }
 }

@@ -13,6 +13,7 @@ public class TestCase {
     private String method;
     private String service_type;
     private String service_uri;
+    private String description;//for single API testing
 
     private Map<String, TestParameter> inputParameterMap;
     private Map<String, TestExpectResult> expectResultMap;
@@ -54,6 +55,14 @@ public class TestCase {
 
     public void setService_uri(String service_uri) {
         this.service_uri = service_uri;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public Map<String, TestParameter> getInputParameterMap() {

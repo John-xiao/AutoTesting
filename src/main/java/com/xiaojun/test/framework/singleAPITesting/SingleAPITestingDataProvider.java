@@ -26,7 +26,7 @@ public class SingleAPITestingDataProvider {
 
     @DataProvider(name = "Configuration_File")
     public static Iterator<Object[]> dataFromConfiguration() {
-        List<Object[]> paramList = new ArrayList<Object[]>();
+        List<Object[]> paramList = new ArrayList<>();
 
         DataPathList pathList = getDataPathList(CONFIGURATION_FILE);
 
@@ -82,7 +82,7 @@ public class SingleAPITestingDataProvider {
     }
 
     private static List<Object[]> getFilePathList(String path, boolean recursive) {
-        List<Object[]> filePathList = new ArrayList<Object[]>();
+        List<Object[]> filePathList = new ArrayList<>();
 
         CommonUtil.getAllFiles(path, recursive, null).forEach((filePath) -> {
             filePathList.add(new Object[]{filePath});
