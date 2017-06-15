@@ -33,4 +33,10 @@ public class TestCaseDemo {
     public void single_API_testing_sample1(String requestDataFile){
         Assert.assertTrue(true);
     }
+
+    @Test(dataProvider = "Path_Parameter",dataProviderClass = SingleAPITestingDataProvider.class)
+    @RequestDataPath(path = "data/request_data/", recursive = true)
+    public void single_API_testing_sample2(String requestDataFile){
+        Assert.assertTrue(true);
+    }
 }

@@ -65,6 +65,22 @@ public class SingleAPITestingDataProvider {
         return collection;
     }
 
+    @DataProvider(name = "Path_Parameter")
+    public static Iterator<Object[]> dataFromPath(final Method testMethod) throws RuntimeException {
+        RequestDataPath dataPath = testMethod.getAnnotation(RequestDataPath.class);
+
+        if (null != dataPath) {
+            List<Object[]> filePathList = getFilePathList(dataPath.path(), dataPath.recursive());
+            log.info("File Path List:");
+            filePathList.forEach((fileList) -> {
+                log.info("" + fileList[0]);
+            });
+            return filePathList.iterator();
+        } else {
+            throw new RuntimeException("Could not find the annotation: RequestDataPath in method: " + testMethod.getName());
+        }
+    }
+
     private static List<Object[]> getFilePathList(String path, boolean recursive) {
         List<Object[]> filePathList = new ArrayList<Object[]>();
 
