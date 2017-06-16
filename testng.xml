@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+
+<suite name="OrderTestSuite">
+    <listeners>
+        <listener class-name="com.xiaojun.test.framework.TestReporter"/>
+    </listeners>
+    <test name="OrderTest">
+        <classes>
+            <class name="com.xiaojun.test.testcase.TestCaseDemo"/>
+            <class name="com.xiaojun.test.testcase.SingleAPITestCaseDemo1"/>
+            <class name="com.xiaojun.test.testcase.SingleAPITestCaseDemo2"/>
+        </classes>
+    </test>
+</suite>
